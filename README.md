@@ -28,18 +28,18 @@ To use this tool, prepare a yaml file with the cluster details:
 
     $ cat config.yaml
     clusters:
-      - name: hub
-        url: api.perf1.example.com
-        username: kubeadmin
-        password: password-for-perf1
-      - name: c1
-        url: api.perf2.example.com
-        username: kubeadmin
-        password: password-for-perf2
-      - name: c2
-        url: api.perf3.example.com
-        username: kubeadmin
-        password: password-for-perf3
+    - name: hub
+      url: api.perf1.example.com
+      username: kubeadmin
+      password: password-for-perf1
+    - name: c1
+      url: api.perf2.example.com
+      username: kubeadmin
+      password: password-for-perf2
+    - name: c2
+      url: api.perf3.example.com
+      username: kubeadmin
+      password: password-for-perf3
     current-context: hub
 
 ## Log in to cluterset
