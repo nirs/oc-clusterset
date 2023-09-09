@@ -3,7 +3,12 @@ SPDX-FileCopyrightText: The RamenDR authors
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# oc clusterset plugin.
+# oc clusterset plugin
+
+The oc clusterset plugin manages logins for clusterset.
+
+Typical use case is to log in to the hub and managed clusters when
+working with ACM managed clusters.
 
 ## Requirements
 
@@ -14,12 +19,12 @@ SPDX-License-Identifier: Apache-2.0
 Copy the plugin to directory in the PATH
 
 ```
-cp oc-clusterset /usr/loca/bin/
+cp oc-clusterset /usr/local/bin/
 ```
 
 ## Clusterset configuration
 
-To use this tool, prepare a yaml files with the cluster details:
+To use this tool, prepare a yaml file with the cluster details:
 
     $ cat config.yaml
     clusters:
