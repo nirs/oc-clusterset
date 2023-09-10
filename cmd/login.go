@@ -32,9 +32,9 @@ func runLogin(cmd *cobra.Command, args []string) {
 	for _, cluster := range clusterset.Clusters {
 		loginToCluster(cluster)
 		renameContext(cluster)
-		if clusterset.CurrentContext != "" {
-			setCurrentContext(clusterset.CurrentContext)
-		}
+	}
+	if clusterset.CurrentContext != "" {
+		setCurrentContext(clusterset.CurrentContext)
 	}
 }
 
