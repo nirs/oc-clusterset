@@ -26,21 +26,23 @@ cp oc-clusterset /usr/local/bin/
 
 To use this tool, prepare a yaml file with the cluster details:
 
-    $ cat config.yaml
-    clusters:
-    - name: hub
-      url: api.perf1.example.com
-      username: kubeadmin
-      password: password-for-perf1
-    - name: c1
-      url: api.perf2.example.com
-      username: kubeadmin
-      password: password-for-perf2
-    - name: c2
-      url: api.perf3.example.com
-      username: kubeadmin
-      password: password-for-perf3
-    current-context: hub
+```
+$ cat config.yaml
+clusters:
+- name: hub
+  url: cluster1.example.com:8443
+  username: kubeadmin
+  password: PeSkM-R6YcH-LyPZa-oTOO1
+- name: c1
+  url: cluster2.example.com:8443
+  username: kubeadmin
+  password: ZjIZn-SFUyR-aE4gI-fJcfL
+- name: c2
+  url: cluster3.example.com:8443
+  username: kubeadmin
+  password: 7C700-oVS3Q-25rtx-YMew5
+  current-context: hub
+```
 
 ## Log in to cluterset
 
