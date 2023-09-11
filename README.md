@@ -59,3 +59,7 @@ To log out from all clusters in config.yaml:
 ```
 oc clusterset --config config.yaml
 ```
+
+## License
+
+oc-clusterset is released under the Apache 2.0 license. See [LICENSE](LICENSE)
