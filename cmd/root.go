@@ -26,15 +26,15 @@ var example = `  # Log in to all clusterss in config.yaml:
   - name: hub
     url: cluster1.example.com:8443
     username: kubeadmin
-    password: my-cluster1-token
+    password: PeSkM-R6YcH-LyPZa-oTOO1
   - name: c1
     url: cluster2.example.com:8443
     username: kubeadmin
-    password: cluster3-token
+    password: ZjIZn-SFUyR-aE4gI-fJcfL
   - name: c2
     url: cluster3.example.com:8443
     username: kubeadmin
-    password: cluster3-token
+    password: 7C700-oVS3Q-25rtx-YMew5
   current-context: hub
 `
 
