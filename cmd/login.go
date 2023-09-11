@@ -11,6 +11,7 @@ import (
 )
 
 var skipTLSVerify bool
+var certificateAuthority string
 
 var loginCmd = &cobra.Command{
 	Use:   "login",
@@ -24,6 +25,11 @@ func init() {
 		"If true, the server's certificate will not be checked for validity. "+
 			"This will make your HTTPS connections insecure",
 	)
+	loginCmd.Flags().StringVar(
+		&certificateAuthority, "certificate-authority", "",
+		"Path to a cert file for the certificate authority",
+	)
+
 	rootCmd.AddCommand(loginCmd)
 }
 
@@ -57,6 +63,9 @@ func loginToCluster(cluster *Cluster) {
 	)
 	if skipTLSVerify {
 		cmd.Args = append(cmd.Args, "--insecure-skip-tls-verify")
+	}
+	if certificateAuthority != "" {
+		cmd.Args = append(cmd.Args, "--certificate-authority", certificateAuthority)
 	}
 
 	// oc may write useful errors to stdout.
