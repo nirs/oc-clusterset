@@ -87,11 +87,8 @@ func setCurrentContext(name string) {
 	if err != nil {
 		errlog.Fatal(err)
 	}
-
 	dbglog.Printf("Setting current context to %q\n", name)
-
 	config.CurrentContext = name
-
 	if err := clientcmd.WriteToFile(*config, kubeconfig); err != nil {
 		errlog.Fatal(err)
 	}
