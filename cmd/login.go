@@ -4,7 +4,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -48,13 +47,17 @@ func runLogin(cmd *cobra.Command, args []string) {
 
 func loginToCluster(cluster *Cluster) {
 	dbglog.Printf("Logging in to cluster %q %q", cluster.Name, cluster.Url)
-	cmd := exec.Command(
-		"oc", "login", cluster.Url,
+
+	cmd := exec.Command("oc",
+		"login",
+		cluster.Url,
 		"--username", cluster.Username,
 		"--password", cluster.Password,
 		"--kubeconfig", kubeconfig,
-		fmt.Sprintf("--insecure-skip-tls-verify=%v", skipTLSVerify),
 	)
+	if skipTLSVerify {
+		cmd.Args = append(cmd.Args, "--insecure-skip-tls-verify")
+	}
 
 	// oc may write useful errors to stdout.
 	out, err := cmd.CombinedOutput()
