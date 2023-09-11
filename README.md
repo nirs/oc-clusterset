@@ -54,7 +54,7 @@ oc clusterset login --config config.yaml
 
 ## Log out from cluterset
 
-To log out from all clusters config.yaml:
+To log out from all clusters in config.yaml:
 
 ```
 oc clusterset --config config.yaml
