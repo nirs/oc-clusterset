@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"log"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -48,10 +49,16 @@ func loginToCluster(cluster *Cluster) {
 		"--password", cluster.Password,
 		"--kubeconfig", kubeconfig,
 	)
-	out, err := cmd.Output()
+
+	// Allow interaction with oc login for skipping tls verification.
+	// Not needed if we use --insecure-skip-tls-verify.
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err := cmd.Run()
 	if err != nil {
-		// oc writes error message to stdout.
-		log.Fatalf("oc login failed: [%s] %s", err, out)
+		log.Fatalf("Login failed: %s", err)
 	}
 }
 

@@ -42,9 +42,10 @@ func logoutFromCluster(cluster *Cluster) {
 		"--kubeconfig", kubeconfig,
 		"--context", cluster.Name,
 	)
-	out, err := cmd.Output()
+	// oc may write useful errors to stdout.
+	out, err := cmd.CombinedOutput()
 	if err != nil {
 		// oc writes error message to stdout.
-		log.Fatalf("oc login failed: [%s] %s", err, out)
+		log.Fatalf("Logout failed: [%s] %s", err, out)
 	}
 }
