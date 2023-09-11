@@ -5,7 +5,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strings"
 
@@ -25,9 +24,7 @@ type Clusterset struct {
 }
 
 func loadClusterset(filename string) (*Clusterset, error) {
-	if verbose {
-		log.Printf("Loading config from %q\n", filename)
-	}
+	dbglog.Printf("Loading config from %q\n", filename)
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err

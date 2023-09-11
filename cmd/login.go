@@ -4,7 +4,6 @@
 package cmd
 
 import (
-	"log"
 	"os"
 	"os/exec"
 
@@ -25,11 +24,9 @@ func init() {
 func runLogin(cmd *cobra.Command, args []string) {
 	clusterset, err := loadClusterset(config)
 	if err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
-	if verbose {
-		log.Printf("Using kubeconfig %q\n", kubeconfig)
-	}
+	dbglog.Printf("Using kubeconfig %q\n", kubeconfig)
 	for _, cluster := range clusterset.Clusters {
 		loginToCluster(cluster)
 		renameContext(cluster)
@@ -40,9 +37,7 @@ func runLogin(cmd *cobra.Command, args []string) {
 }
 
 func loginToCluster(cluster *Cluster) {
-	if verbose {
-		log.Printf("Logging in to cluster %q %q", cluster.Name, cluster.Url)
-	}
+	dbglog.Printf("Logging in to cluster %q %q", cluster.Name, cluster.Url)
 	cmd := exec.Command(
 		"oc", "login", cluster.Url,
 		"--username", cluster.Username,
@@ -58,7 +53,7 @@ func loginToCluster(cluster *Cluster) {
 
 	err := cmd.Run()
 	if err != nil {
-		log.Fatalf("Login failed: %s", err)
+		errlog.Fatalf("Login failed: %s", err)
 	}
 }
 
@@ -69,12 +64,10 @@ func loginToCluster(cluster *Cluster) {
 func renameContext(cluster *Cluster) {
 	config, err := clientcmd.LoadFromFile(kubeconfig)
 	if err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
 
-	if verbose {
-		log.Printf("Renaming context %q to %q\n", config.CurrentContext, cluster.Name)
-	}
+	dbglog.Printf("Renaming context %q to %q\n", config.CurrentContext, cluster.Name)
 
 	// Remove previously updated context, since `oc login`.
 	delete(config.Contexts, cluster.Name)
@@ -85,23 +78,21 @@ func renameContext(cluster *Cluster) {
 	config.CurrentContext = cluster.Name
 
 	if err := clientcmd.WriteToFile(*config, kubeconfig); err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
 }
 
 func setCurrentContext(name string) {
 	config, err := clientcmd.LoadFromFile(kubeconfig)
 	if err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
 
-	if verbose {
-		log.Printf("Setting current context to %q\n", name)
-	}
+	dbglog.Printf("Setting current context to %q\n", name)
 
 	config.CurrentContext = name
 
 	if err := clientcmd.WriteToFile(*config, kubeconfig); err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
 }

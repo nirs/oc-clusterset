@@ -4,7 +4,6 @@
 package cmd
 
 import (
-	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -61,6 +60,6 @@ func defaultKubeconfig() string {
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Fatal(err)
+		errlog.Fatal(err)
 	}
 }
