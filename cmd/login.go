@@ -34,6 +34,9 @@ func runLogin(cmd *cobra.Command, args []string) {
 		errlog.Fatal(err)
 	}
 	dbglog.Printf("Using kubeconfig %q\n", kubeconfig)
+	if skipTLSVerify {
+		dbglog.Printf("Skipping TLS Verfication, your HTTPS connections is insecure")
+	}
 	for _, cluster := range clusterset.Clusters {
 		loginToCluster(cluster)
 		renameContext(cluster)
