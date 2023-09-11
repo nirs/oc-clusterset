@@ -4,11 +4,14 @@
 package cmd
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/tools/clientcmd"
 )
+
+var skipTLSVerify bool
 
 var loginCmd = &cobra.Command{
 	Use:   "login",
@@ -17,6 +20,11 @@ var loginCmd = &cobra.Command{
 }
 
 func init() {
+	loginCmd.Flags().BoolVar(
+		&skipTLSVerify, "insecure-skip-tls-verify", false,
+		"If true, the server's certificate will not be checked for validity. "+
+			"This will make your HTTPS connections insecure",
+	)
 	rootCmd.AddCommand(loginCmd)
 }
 
@@ -42,6 +50,7 @@ func loginToCluster(cluster *Cluster) {
 		"--username", cluster.Username,
 		"--password", cluster.Password,
 		"--kubeconfig", kubeconfig,
+		fmt.Sprintf("--insecure-skip-tls-verify=%v", skipTLSVerify),
 	)
 
 	// oc may write useful errors to stdout.
