@@ -29,19 +29,19 @@ To use this tool, prepare a yaml file with the cluster details:
 ```
 $ cat config.yaml
 clusters:
-- name: hub
-  url: cluster1.example.com:8443
-  username: kubeadmin
-  password: PeSkM-R6YcH-LyPZa-oTOO1
-- name: c1
-  url: cluster2.example.com:8443
-  username: kubeadmin
-  password: ZjIZn-SFUyR-aE4gI-fJcfL
-- name: c2
-  url: cluster3.example.com:8443
-  username: kubeadmin
-  password: 7C700-oVS3Q-25rtx-YMew5
-  current-context: hub
+  - name: hub
+    url: cluster1.example.com:8443
+    username: kubeadmin
+    password: PeSkM-R6YcH-LyPZa-oTOO1
+  - name: c1
+    url: cluster2.example.com:8443
+    username: kubeadmin
+    password: ZjIZn-SFUyR-aE4gI-fJcfL
+  - name: c2
+    url: cluster3.example.com:8443
+    username: kubeadmin
+    password: 7C700-oVS3Q-25rtx-YMew5
+current-context: hub
 ```
 
 ## Log in to cluterset
@@ -57,7 +57,7 @@ oc clusterset login --config config.yaml
 To log out from all clusters in config.yaml:
 
 ```
-oc clusterset --config config.yaml
+oc clusterset logout --config config.yaml
 ```
 
 ## License
