@@ -23,18 +23,18 @@ var example = `  # Log in to all clusterss in config.yaml:
 
   # Example config.yaml:
   clusters:
-  - name: hub
-    url: cluster1.example.com:8443
-    username: kubeadmin
-    password: PeSkM-R6YcH-LyPZa-oTOO1
-  - name: c1
-    url: cluster2.example.com:8443
-    username: kubeadmin
-    password: ZjIZn-SFUyR-aE4gI-fJcfL
-  - name: c2
-    url: cluster3.example.com:8443
-    username: kubeadmin
-    password: 7C700-oVS3Q-25rtx-YMew5
+    - name: hub
+      url: cluster1.example.com:8443
+      username: kubeadmin
+      password: PeSkM-R6YcH-LyPZa-oTOO1
+    - name: c1
+      url: cluster2.example.com:8443
+      username: kubeadmin
+      password: ZjIZn-SFUyR-aE4gI-fJcfL
+    - name: c2
+      url: cluster3.example.com:8443
+      username: kubeadmin
+      password: 7C700-oVS3Q-25rtx-YMew5
   current-context: hub
 `
 
