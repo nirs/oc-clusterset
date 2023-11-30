@@ -42,6 +42,9 @@ var rootCmd = &cobra.Command{
 	Use:     "oc-clusterset",
 	Short:   "manage clusterset logins",
 	Example: example,
+	Annotations: map[string]string{
+		cobra.CommandDisplayNameAnnotation: "oc clusterset",
+	},
 }
 
 func init() {
