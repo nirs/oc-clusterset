@@ -6,7 +6,7 @@ module github.com/nirs/oc-clusterset
 go 1.19
 
 require (
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	k8s.io/client-go v0.28.1
 	sigs.k8s.io/yaml v1.3.0
 )
