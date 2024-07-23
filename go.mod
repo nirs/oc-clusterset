@@ -8,7 +8,7 @@ go 1.21
 require (
 	github.com/spf13/cobra v1.8.1
 	k8s.io/client-go v0.28.4
-	sigs.k8s.io/yaml v1.3.0
+	sigs.k8s.io/yaml v1.4.0
 )
 
 require (
