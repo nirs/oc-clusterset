@@ -4,7 +4,7 @@
 output := oc-clusterset
 
 all:
-	go build -o $(output)
+	CGO_ENABLED=0 go build -o $(output)
 
 test: reuse lint
 
