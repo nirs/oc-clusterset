@@ -14,14 +14,18 @@ working with ACM managed clusters.
 
 - oc - OpenShift Command Line Interface (CLI)
 
-## Install
+## Installing
 
-Copy the plugin to directory in the PATH
+Download the executable for your operating system and architecture and
+install in the PATH.
+
+Example for GNU/Linux on X86_64, installing in /usr/local/bin:
 
 ```
-cp oc-clusterset /usr/local/bin/
+curl -L -o oc-clusterset https://github.com/nirs/oc-clusterset/releases/download/v0.1.0/oc-clusterset-v0.1.0-linux-amd64
+sudo install oc-clusterset /usr/local/bin
+rm oc-clusterset
 ```
-
 ## Clusterset configuration
 
 To use this tool, prepare a yaml file with the cluster details:
