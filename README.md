@@ -26,6 +26,18 @@ curl -L -o oc-clusterset https://github.com/nirs/oc-clusterset/releases/download
 sudo install oc-clusterset /usr/local/bin
 rm oc-clusterset
 ```
+
+## Shell completion
+
+To enable shell completion install the
+[oc_complete-clusterset](oc_complete-clusterset) script in the PATH.
+
+```
+curl -L -O https://raw.githubusercontent.com/nirs/oc-clusterset/main/oc_complete-clusterset
+sudo install oc_complete-clusterset /usr/local/bin
+rm oc_complete-clusterset
+```
+
 ## Clusterset configuration
 
 To use this tool, prepare a yaml file with the cluster details:
