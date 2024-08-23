@@ -3,7 +3,7 @@
 
 module github.com/nirs/oc-clusterset
 
-go 1.21
+go 1.23
 
 require (
 	github.com/spf13/cobra v1.8.1
